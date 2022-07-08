@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Review {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    //specific order
     private Long id;
     private String title;
     private Integer score;
