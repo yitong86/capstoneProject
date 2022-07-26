@@ -1,9 +1,9 @@
 package com.careerdevs.sushicafe.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -14,6 +14,9 @@ public class User {
     private String phoneNumber;
     private Integer orderNumber;
 
+    @OneToMany(mappedBy = "user", fetch=FetchType.LAZY)
+    @JsonIncludeProperties({"orderNumber","id"})
+    private Set<Order> orders;
 
     public User() {
     }
