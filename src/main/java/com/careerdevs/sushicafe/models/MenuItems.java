@@ -8,26 +8,26 @@ import javax.persistence.*;
 public class MenuItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String itemName;
     private String category;
-    private Integer price;
+    private double price;
     private String description;
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="order_id", referencedColumnName = "id")
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     @JsonIncludeProperties({"id", "name"})
-    private Order order;
+    private OrderByUser orderByUser;
 
     public MenuItems() {
     }
 
-    public MenuItems(Long id, String itemName, String category, int price, String description) {
+    public MenuItems(long id, String itemName, String category, double price, String description) {
         this.id = id;
         this.itemName = itemName;
         this.category = category;
@@ -35,20 +35,20 @@ public class MenuItems {
         this.description = description;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getTitle() {
+    public String getItemName() {
         return itemName;
     }
 
-    public void setTitle(String itemName) {
-        this.itemName= itemName;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getCategory() {
@@ -59,19 +59,23 @@ public class MenuItems {
         this.category = category;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getDesc() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDesc(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
+
+
 }
+
+

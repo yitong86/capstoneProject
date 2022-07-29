@@ -9,30 +9,30 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String name;
     private String phoneNumber;
-    private Integer orderNumber;
+    private int orderNumber;
 
     @OneToMany(mappedBy = "user", fetch=FetchType.LAZY)
     @JsonIncludeProperties({"orderNumber","id"})
-    private Set<Order> orders;
+    private Set<OrderByUser> orders;
 
     public User() {
     }
 
-    public User(Long id, String name, String phoneNumber, Integer orderNumber) {
+    public User(long id, String name, String phoneNumber, int orderNumber) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.orderNumber = orderNumber;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -52,11 +52,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getOrderNumber() {
+    public int getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(Integer orderNumber) {
+    public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
     }
 }

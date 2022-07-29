@@ -7,9 +7,9 @@ public class Review {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     //specific order
-    private Long id;
+    private long id;
     private String title;
-    private Integer score;
+    private int score;
     private String body;
 
     @ManyToOne
@@ -19,18 +19,18 @@ public class Review {
     public Review() {
     }
 
-    public Review(Long id, String title, Integer score, String body) {
+    public Review(long id, String title, int score, String body) {
         this.id = id;
         this.title = title;
         this.score = score;
         this.body = body;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class Review {
         this.title = title;
     }
 
-    public Integer getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
