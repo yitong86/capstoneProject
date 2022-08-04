@@ -3,6 +3,7 @@ package com.careerdevs.sushicafe.models;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class MenuItems {
@@ -11,9 +12,9 @@ public class MenuItems {
     private long id;
     private String itemName;
     private String category;
-    private double price;
+    private float price;
     private String description;
-
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -27,12 +28,14 @@ public class MenuItems {
     public MenuItems() {
     }
 
-    public MenuItems(long id, String itemName, String category, double price, String description) {
+    public MenuItems(long id, String itemName, String category, float
+            price, String description,String image) {
         this.id = id;
         this.itemName = itemName;
         this.category = category;
         this.price = price;
         this.description = description;
+        this.image = image;
     }
 
     public long getId() {
@@ -59,11 +62,11 @@ public class MenuItems {
         this.category = category;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -75,7 +78,13 @@ public class MenuItems {
         this.description = description;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 @CrossOrigin("*")
@@ -21,9 +22,24 @@ public class MenuControllers {
     @Autowired
     private MenuRepositories menuRepositories;
     @PostMapping("/")
-    public ResponseEntity<MenuItems> createUser(@RequestBody MenuItems newMenuItems){
+    public ResponseEntity<MenuItems> createMenu(@RequestBody MenuItems newMenuItems){
         MenuItems menu = menuRepositories.save(newMenuItems);
         return new ResponseEntity<>(menu, HttpStatus.CREATED);
+    }
+    @PostMapping("/id/{id}")
+    public ResponseEntity<MenuItems> update(@RequestBody MenuItems update,@PathVariable long id){
+
+        MenuItems saveMenu = menuRepositories.save(update);
+        return new ResponseEntity<>(saveMenu,HttpStatus.OK);
+
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MenuItems> updateMenu(@RequestBody MenuItems updateMenu,@PathVariable long id){
+
+            MenuItems saveMenu = menuRepositories.save(updateMenu);
+            return new ResponseEntity<>(saveMenu,HttpStatus.OK);
+
     }
 
     @GetMapping("/")
@@ -31,6 +47,17 @@ public class MenuControllers {
         List<MenuItems> menuItems = menuRepositories.findAll();
         return new ResponseEntity<>(menuItems,HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<MenuItems> getMenuById(@PathVariable long id){
+        Optional<MenuItems> menu = menuRepositories.findById(id);
+        if(menu.isEmpty()){
+            return new ResponseEntity<MenuItems>(HttpStatus.NOT_FOUND);
+
+        }
+        return new ResponseEntity<>(menu.get(),HttpStatus.OK);
+    }
+
+
 
     @GetMapping("/category/{category}")
     public ResponseEntity<List<MenuItems>> getMenusByCategory(RestTemplate restTemplate, @PathVariable String category){
