@@ -11,9 +11,10 @@ public class OrderByUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private int totalPrice;
     private int orderNumber;
     private String itemName;
+    private int quantity;
+    private int totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -28,11 +29,28 @@ public class OrderByUser {
     public OrderByUser() {
     }
 
-    public OrderByUser(long id, int totalPrice, int orderNumber, String itemName) {
+    public OrderByUser(long id, int orderNumber, String itemName, int quantity, int totalPrice) {
         this.id = id;
-        this.totalPrice = totalPrice;
         this.orderNumber = orderNumber;
         this.itemName = itemName;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void addItems(MenuItems menuItem) {

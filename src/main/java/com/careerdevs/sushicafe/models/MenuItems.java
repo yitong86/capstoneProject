@@ -12,7 +12,7 @@ public class MenuItems {
     private long id;
     private String itemName;
     private String category;
-    private float price;
+    private Float price;
     private String description;
     private String image;
 
@@ -28,7 +28,7 @@ public class MenuItems {
     public MenuItems() {
     }
 
-    public MenuItems(long id, String itemName, String category, float
+    public MenuItems(long id, String itemName, String category, Float
             price, String description,String image) {
         this.id = id;
         this.itemName = itemName;
@@ -62,11 +62,11 @@ public class MenuItems {
         this.category = category;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
